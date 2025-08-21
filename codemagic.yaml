@@ -1,12 +1,9 @@
 workflows:
-  android-app-build:
-    name: Android App Build
-    environment:
-      android_sdk_version: '34'
-      java_version: '17'
+  android-workflow:
+    name: Android Workflow
+    instance_type: mac_mini_m1
     scripts:
-      - name: Build Android Release
-        script: |
-          ./gradlew assembleRelease
+      - name: Build Android release
+        script: ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/apk/**/*.apk

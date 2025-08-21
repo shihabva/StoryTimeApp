@@ -3,9 +3,12 @@ workflows:
     name: Android Workflow
     instance_type: mac_mini_m1
     scripts:
+      - name: Set up Keystore
+        script: |
+          echo "$MY_RELEASE_KEY_BASE64" | base64 --decode > my-release-key.jks
       - name: Build Android release
-        script: | 
+        script: |
           chmod +x ./gradlew
           ./gradlew assembleRelease
     artifacts:
-      - app/build/outputs/apk/**/*.apk
+      - app/build/outputs/apk/release/*.apk

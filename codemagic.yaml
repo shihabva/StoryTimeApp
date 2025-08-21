@@ -4,6 +4,8 @@ workflows:
     instance_type: mac_mini_m1
     scripts:
       - name: Build Android release
-        script: ./gradlew assembleRelease
+        script: | 
+          chmod +x ./gradlew
+          ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/apk/**/*.apk
